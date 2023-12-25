@@ -72,17 +72,14 @@ import iconsUrl from "../img/sprite-modal-sprite-icon.svg"
 ];
 
 
-const gallery = document.querySelector(".gallery");
-
-const newGallery = images.map(({ preview, original, description }) => `
-  <li class="gallery-item">
-    <a href="${original}" class="gallery-link">
-      <img src="${preview}" class="gallery-image" data-source="${original}" alt="${description}">
-    </a>
-  </li>
-` );
-gallery.innerHTML = newGallery.join("");
-
+const itemGallery = document.querySelector(".gallery");
+itemGallery.innerHTML = images.map(({ preview, original, description }) =>`
+    <li class="gallery-item">
+        <a class="gallery-link" href="${original.replace('http://', 'https://')}">
+            <img class="gallery-image" src="${preview.replace('http://', 'https://')}" data-source="${original.replace('http://', 'https://')}" alt="${description}" />
+        </a>
+    </li>`
+).join('');
 
 
 
