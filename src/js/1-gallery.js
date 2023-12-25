@@ -5,6 +5,9 @@ import "../css/custom-style-modal.css"
 import iconsUrl from "../img/sprite-modal-sprite-icon.svg"
 
 
+
+
+// IMpORTUUU
  const images = [
   {
     preview:
