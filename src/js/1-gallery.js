@@ -1,4 +1,11 @@
-const images = [
+import SimpleLightbox from "simplelightbox";
+import "simplelightbox/dist/simple-lightbox.min.css";
+import "../css/gallery-styles.css"
+import "../css/custom-style-modal.css"
+import iconsUrl from "../img/sprite-modal-sprite-icon.svg"
+
+
+ const images = [
   {
     preview:
       "https://cdn.pixabay.com/photo/2019/05/14/16/43/rchids-4202820__480.jpg",
@@ -65,23 +72,18 @@ const images = [
 ];
 
 
-const itemGallery = document.querySelector(".gallery");
+const gallery = document.querySelector(".gallery");
+
+const newGallery = images.map(({ preview, original, description }) => `
+  <li class="gallery-item">
+    <a href="${original}" class="gallery-link">
+      <img src="${preview}" class="gallery-image" data-source="${original}" alt="${description}">
+    </a>
+  </li>
+` );
+gallery.innerHTML = newGallery.join("");
 
 
-itemGallery.innerHTML = images.map(({ preview, original, description }) =>`
-    <li class="gallery-item">
-        <a class="gallery-link" href="${original}">
-            <img class="gallery-image" src="${original}" data-source="${original}" alt="${description}" />
-        </a>
-    </li>`
-).join('');
-
-import SimpleLightbox from "simplelightbox";
-import "simplelightbox/dist/simple-lightbox.min.css";
-import "../css/gallery-styles.css"
-import "../css/custom-style-modal.css"
-import iconsUrl from "../img/sprite-modal-sprite-icon.svg"
- 
 
 
 new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250,

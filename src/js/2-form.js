@@ -16,7 +16,7 @@ section.insertAdjacentHTML('beforeend', newSection);
 
 const form = document.querySelector('.feedback-form');
 const email = form.querySelector('[name="email"]');
-const textarea = form.querySelector('[name="message"]');
+const textarea = form.querySelector('[name="message"]'); 
 
 const initialData = localStorage.getItem('feedback-form-state');
 
@@ -25,8 +25,7 @@ if (initialData) {
     const initialFormData = JSON.parse(initialData);
     email.value = initialFormData.email;
     textarea.value = initialFormData.message;
-  }
-  catch (e) {
+  } catch (e) {
     console.error('LOCAL STORAGE PARSE ERROR', e);
   }
 }
@@ -34,28 +33,22 @@ if (initialData) {
 form.addEventListener('input', () => {
   const formData = {
     email: email.value.trim(),
-      massage: textarea.value.trim()
-
-};
-localStorage.setItem('feedback-form-state', JSON.stringify(formData));
-
+    message: textarea.value.trim(), 
+  };
+  localStorage.setItem('feedback-form-state', JSON.stringify(formData));
 });
-
 
 form.addEventListener('submit', handleSubmit);
 
 function handleSubmit(event) {
   event.preventDefault();
-  
+
   const emailValue = email.value;
   const messageValue = textarea.value;
-
 
   if (emailValue === '' || messageValue === '') {
     alert('Please fill in both fields in the form.');
     return;
-
-
   }
 
   console.log({ email: emailValue, message: messageValue });
